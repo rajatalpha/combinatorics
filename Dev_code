@@ -1,0 +1,61 @@
+from itertools import permutations
+def getfact(list=[])
+#This function gives all factors of the numbers entered in ascending order 
+  a=[]
+  for i in list:
+      p=i+1
+      z=[]
+      for q in range(1,p):
+               if(i%q==0):
+                   z.append(q)
+                   z.sort()
+      a.append(z)        
+  return(a)    
+  
+def getcomb(listy=[])
+#This function gives all combinations of a list 
+    t=any( instance(e,list) for e in listy)
+    comb=[]
+    if(t=='False'):
+        comb=list(permutations(listy,len(listy)))
+        return(comb)
+    else:
+        l=[]
+        leng=[len(x) for x in listy]
+        for i in range(0,len(listy)):
+              g=[]
+              g=list(permutations(listy[i],leng[i]))
+              l.append(g)
+              
+        return(l)      
+              
+######################### Main Driver Program##########################
+m=input('Enter the number of test cases: ')
+op=[]
+if(m==1):
+      nos1=[]
+      num=input('Enter the number: ')
+      nos1.append(num)
+      op=getfact(nos1)
+      co=getcomb(op)
+      print(co)
+else:
+     nos=[]
+     s=input('Enter the number space seperated: ')      #Use raw_input in case of Python 2.3.7
+     nos=map(int,s.split())
+     op=getfact(nos)
+     co=getcomb(op)
+     print(co)
+     
+     
+     
+     
+     
+     
+     
+     
+     
+              
+              
+              
+              
