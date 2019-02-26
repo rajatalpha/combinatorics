@@ -1,5 +1,5 @@
 from itertools import permutations
-def getfact(list=[])
+def getfact(list=[]):
 #This function gives all factors of the numbers entered in ascending order 
   a=[]
   for i in list:
@@ -12,9 +12,9 @@ def getfact(list=[])
       a.append(z)        
   return(a)    
   
-def getcomb(listy=[])
+def getcomb(listy=[]):
 #This function gives all combinations of a list 
-    t=any( instance(e,list) for e in listy)
+    t=any( isinstance(e,list) for e in listy)
     comb=[]
     if(t=='False'):
         comb=list(permutations(listy,len(listy)))
@@ -27,9 +27,32 @@ def getcomb(listy=[])
               g=list(permutations(listy[i],leng[i]))
               l.append(g)
               
-        return(l)      
-              
-######################### Main Driver Program##########################
+        return(l)   
+
+
+def twolister(listr=[]):
+	#this function converts the list of list into a list with 2 elements 
+    t=any( isinstance(e,list) for e in listr)
+    s=[] 
+    if(t=='False'):
+      z=len(listr)-1
+      for i in range(0,z):
+        p=[]
+        p.append(listr[i])
+        p.append(listr[i+1])
+        s.append(p)
+        print(p)
+      return(s)
+    else:
+      leng=[len(x) for x in listr]
+      for i in range(0,len(listr)):
+        for j in range(0,leng[i]-1):
+          v=[]
+          v.append(listr[i][j])
+          v.append(listr[i][j+1])
+          s.append(v)
+      return(s)    
+##################### Main Driver#################
 m=input('Enter the number of test cases: ')
 op=[]
 if(m==1):
@@ -38,15 +61,16 @@ if(m==1):
       nos1.append(num)
       op=getfact(nos1)
       co=getcomb(op)
-      print(co)
+      two=twolister(op)
+      print(two)
 else:
      nos=[]
      s=input('Enter the number space seperated: ')      #Use raw_input in case of Python 2.3.7
      nos=map(int,s.split())
-     op=getfact(nos)
-     co=getcomb(op)
-     print(co)
-     
+     op1=getfact(nos)
+     co1=getcomb(op1)
+     two1=twolister(op1)
+     print(two1)
      
      
      
