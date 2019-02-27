@@ -1,0 +1,38 @@
+ outside_list=[]
+    for i in range(0,5):
+        inside_list=[]
+        inside_list.append(i)
+        inside_list.append(i+1)
+        outside_list.append(inside_list)
+
+       #you can access any inside_list from the outside_list and append     
+        outside_list[1].append(100)
+        print(outside_list)
+
+----------------------------------------------
+comb=[]
+leng=[len(x) for x in n]
+for z in list(n):
+    comb1=[]
+    for i in range(0,len(n)):
+        comb1=permutations(z,leng[i])
+    comb.append(comb1)
+print(comb)
+----------------------------------------------
+m=[1,2]
+n=[[1,2],[1,2,3],[1,2,3,4]]
+p=len(m)
+q=len(n)
+q
+leng=[len(x) for x in n]
+----------------------------------------------------------------------
+from itertools import permutations
+l=[]
+b=[[1,2],[2,3]]
+leng=[len(x) for x in b]
+for i in range(0,len(b)):
+    g=[]
+    g=list(permutations(b[i],leng[i]))
+    l.append(g)
+
+print(l)
