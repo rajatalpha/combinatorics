@@ -1,0 +1,235 @@
+Inversion Base 8
+Marks : 30
+
+Problem Description
+Given a sequence of distinct numbers a1, a2, ..an, an inversion occurs if there are indices i<j such that ai>aj .
+
+For example, in the sequence 2 1 4 3 there are 2 inversions (2 1) and (4 3).
+
+The input will be a main sequence of N positive integers. From this sequence, a Derived Sequence will be obtained using the following rule. The output is the number of inversions in the derived sequence.
+
+Rule for forming derived sequence
+
+An integer may be represented in base 8 notation. The number 10305 base 8, is 1x84 + 3x82 + 5 =4293. Note that none of the digits in that representation will be more than 7.
+
+The sum of digits in a base 8 representation is the sum of all the digits at the various positions in the representation. Thus for the number 4293, the representation is 10305, and the sum of digits is 1+0+3+0+5=9. The sum of digits is done in the decimal system, and does not need to be in base 8
+
+The derived sequence is the sum of the digits when the corresponding integer is represented in the base 8 form. Once the numbers in the main sequence are expressed in base 8, the derived sequence is the sum of the digits of the number in the base 8 representation.
+
+Constraints
+N <= 50
+
+Integers in sequence <= 10^7
+
+Input Format
+The first line of the input will have a single integer, which will give N.
+
+The next line will consist of a comma separated string of N integers (in decimal), which is the main sequence
+
+Output
+The number of inversions in the derived sequence formed from the main sequence.
+
+Test Case
+
+Explanation
+Example 1
+
+Input
+
+5
+
+55, 53, 88, 27, 33
+
+Output
+
+8
+
+Explanation
+
+The number of integers is 5, as specified in the first line. The given sequence is 55, 53, 88, 27, 33.
+
+The base 8 representation is 67, 65, 130, 33, 41 The derived sequence is 13,11,4,6,5 (corresponding to the sum of digits). The number of inversions in this is 8, namely (13,11), (13,4), 
+(13,6), (13,5),(11,4),(11,6), (11,5), (6,5)
+
+Hence the result is 8
+
+Example 2
+
+Input
+
+8
+
+120,21,47,64,72,35,18,98
+
+Output
+
+15
+
+Explanation
+
+N=8, and the numbers are as given
+
+The base 8 representation of this is 170, 25, 57, 100, 110, 43, 22, 142and the derived sequence (sum of digits) is 8, 7, 12, 1, 2, 7, 4, 7. The number of inversions is 15 (8,7), (8,1),
+ (8,2), (8,7), (8,4), (8,7), (7,1)(7,2),(7,4), (12,1), (12,2), (12,7), (12,4), (12,7), (7,4)
+
+Hence the output is 15
+**********************************************************************************************************************************************************************************************************************************************************************************************8
+Casino Games
+Marks : 30
+
+Problem Description
+Casino Royale at Las Vegas is famous for its innovative games. Visitors can play any of the games from a set of N games in a row. For each game, the playing fee is half the amount (rounded
+ down to an integer amount) you have at that point in time. The amount you can win at any game is specified by the casino. You can skip a game in the row of games and you need not pay any
+ fee for skipping the game. Assume that you are an expert card player like Omar Sharif, and you always win if you play. Given the initial amount you start with, write a program to output 
+the maximum amount you can win.
+
+There is one line in the input with a number of comma separated numbers
+
+Constraints
+Number of games <= 100
+
+Input Format
+First number in the input is N, the number of games
+
+The next N numbers represent the amount of money that can be won in each of the N games.
+
+The next (and last) number in the input is the amount of money you start with.
+
+Output
+One integer giving the maximum amount won at the end of play
+
+Test Case
+
+Explanation
+Example 1
+
+Input
+
+9,8,6,4,3,9,2,5,8,6,2
+
+Output
+
+16
+
+Explanation
+
+There are 9 games (N=9)
+
+The amounts of money that can be won in the 9 games are 8, 6, 4, 3, 9, 2, 5, 8 and 6 respectively.
+
+The amount of money you start with is 2
+
+One way of achieving the (maximum possible) amount of 16 is by skipping games 3, 4, 6, 7 and 8. The corresponding amounts you end up with after each of the games are.
+
+9, 11, 11, 11, 15, 15, 15, 16, 16
+
+Hence the output is 16
+
+Example 2
+
+Input
+
+5,9,12,8,6,7,2
+
+Output
+
+17
+
+Explanation
+
+N=5, the amounts to be won in each game are 9, 12, 8, 6, 7 respectively, and the starting amount is 2.
+
+Play the first two games and by pass the rest. The amount at the end is 17.
+
+**********************************************************************************************************************************************************************************************
+Stock Update
+Marks : 30
+
+Problem Description
+A stock exchange processes N stocks and once every 20 seconds it sends out the best five prices and total order quantities per stock. While the message size for this market data is < S kilobytes per stock, the exchange needs to send it out as a fixed size frame of F KB. As a result the bandwidth consumption is (N * S) KB / 20 sec or (N * S * 8)/20 Kbps
+
+The exchange decides to use compression and packing of messages in to frames, to reduce bandwidth consumption. Given a list of messages, their original size, and their compressed size, you need to pack these messages in to fixed FKB frames such that the number of frames is minimized. A message cannot cut across frames. There may be wasted space per frame. Messages can be mapped in any order. 
+
+Constraints
+C < = S < = F
+
+N < = 10000
+
+F <= 1024
+
+Input Format
+First line contains an integer N denoting the number of messages
+
+Next line contain an integer F denoting size of the frame (in KB)
+
+Next N lines contain 2 integers delimited by space denoting original message size (S) and compressed message size(C), respectively. Both are in KB
+
+Output
+Print the minimum number of frames required to send all the messages
+
+Test Case
+
+Explanation
+Example 1
+
+Input
+
+6
+
+20
+
+10 8
+
+9 8
+
+6 4
+
+15 10
+
+8 6
+
+5 4
+
+Output
+
+2
+
+Explanation
+
+N=6, F=20.
+
+For packing the messages in the frame we shall consider only the compressed message sizes. Since the total size of the 6 compressed messages is 40 KB and the bin size is 20 bytes, the optimal number of frames required to pack all message without splitting any message across frames, is 2. We need to see if this is possible. One way of packing them is to put the first three messages into one (8+8+4=20KB) into one frame, and the last three into the second frame (10+6+4=20KB). As the optimal compression is possible, this is the minimum number of frames in which it can be packed. Hence the output is 2.
+
+Example 2
+
+Input
+
+7
+
+20
+
+10 8
+
+9 8
+
+6 4
+
+15 10
+
+8 6
+
+5 4
+
+10 9
+
+Output
+
+3
+
+Explanation
+
+N=7, F = 20
+
+For packing the messages in the frame we shall consider only the compressed message sizes. Since the total size of the 7compressed messages is 49 kB and the bin size is 20 kB, the optimal number of frames required to pack all message without splitting any message across frames, is 3. One way of packing them into frames is to pack the first three into one frame (8+8+4=20), the next 3 into the second frame (10+6+4=20) and the last in a third frame. As the packing into frames can be achieved in the optimal number of frames, 3 is the output
+****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************8
+
