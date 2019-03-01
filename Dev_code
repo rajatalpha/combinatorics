@@ -72,8 +72,93 @@ else:
      two1=twolister(op1)
      print(two1)
      
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~Final Code~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
      
-     
+from itertools import permutations
+def getfact(list=[]):
+#This function gives all factors of the numbers entered in ascending order 
+  a=[]
+  for i in list:
+      p=i+1
+      z=[]
+      for q in range(1,p):
+               if(i%q==0):
+                   z.append(q)
+                   z.sort()
+      a.append(z)        
+  return(a)    
+  
+def getcomb(listy=[]):
+#This function gives all combinations of a list 
+    t=any( isinstance(e,list) for e in listy)
+    comb=[]
+    if(t=='False'):
+        comb=permutations(listy,len(listy))
+        return(comb)
+    else:
+        g=[]    
+        leng=[len(x) for x in listy]
+        for i in range(0,len(listy)):
+              g=list(permutations(listy[i],leng[i]))
+        return(g)   
+
+def twolister(listr=[]):
+	#this function converts the list of list into a list with 2 elements 
+    t=any( isinstance(e,list) for e in listr)
+    s=[] 
+    if(t=='False'):
+      z=len(listr)-1
+      for i in range(0,z):
+        p=[]
+        p.append(listr[i])
+        p.append(listr[i+1])
+        s.append(p)
+      return(s)
+    else:
+      leng=[len(x) for x in listr]
+      for i in range(0,len(listr)):
+        for j in range(0,leng[i]-1):
+          v=[]
+          v.append(listr[i][j])
+          v.append(listr[i][j+1])
+          s.append(v)
+      return(s)
+
+def has_original_pair(my_list, pairs):
+    for i in range(len(my_list)-1):
+        if (my_list[i], my_list[i+1]) in pairs:
+            return True
+    return False
+
+
+##################### Main Driver#################
+m=input('Enter the number of test cases: ')
+op=[]
+if(m==1):
+      nos1=[]
+      num=input('Enter the number: ')
+      nos1.append(num)
+      op=getfact(nos1)
+      co=getcomb(op)
+      two=twolister(op)
+      twoa=two
+      k=set(tuple(x) for x in twoa)
+      print(op)
+      filtered_ll = [x for x in co if not has_original_pair(x,k)] 
+      print(filtered_ll)
+else:
+     nos=[]
+     s=input('Enter the number space seperated: ')      #Use raw_input in case of Python 2.3.7
+     nos=map(int,s.split())
+     op1=getfact(nos)
+     co1=getcomb(op1)
+     two1=twolister(op1)
+     twob=two1
+     k=set(tuple(x) for x in twob)
+     print(op1)
+     print(co1)
+     filtered_ll = [x for x in co1 if not has_original_pair(x,k)] 
+     print(filtered_ll)      
      
      
      
