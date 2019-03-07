@@ -1,0 +1,28 @@
+def fdiv(a:int):
+  #This function directly gives the floor division
+  b = a//2
+  return(b)
+
+def maxprice(l:list,s:int):
+  #This function will return the maximum gain
+  amt=0
+  maxa=0
+  for i in l:
+    amt=fdiv(s)+i
+    if(amt>s):
+      maxa=amt
+      s=amt
+    else:
+      continue
+  return(maxa)
+
+
+n=input('Enter the set of games to be played: ')
+l=[]
+for i in range(int(n)):
+ m=input('Enter the number: ')
+ l.append(m)
+st=int(input("Enter the starting money: "))
+l = list(map(int,l))
+w=maxprice(l,st)
+print(w)
