@@ -1,0 +1,58 @@
+import itertools
+def dec2base(list):
+  f=[]
+  for a in list:
+    b = ""
+    while a != 0:
+        x = '0123456789ABCDEF'
+        c = a % 8
+        c1 = x[c]
+        b = str(c1) + b
+        a = int(a // 8)
+    f.append(b)
+  return(f)
+
+
+def sod(listr):
+  #This function will list of Sum of digits
+  g=[]
+  for i in listr:
+    i=int(i)
+    tot=0
+    while(i>0):
+      dig=int(i)%10
+      tot=tot+dig
+      i=i//10
+    g.append(tot)
+  return(g) 
+
+def cmp(a, b):
+    return (a > b) - (a < b)
+
+def countinversions(r=[]):
+  s=[]
+  count=0
+  for a, b in itertools.permutations(r, 2):
+    f=[]
+    if cmp(a,b)==1:
+      count+=1
+      f.append(a)
+      f.append(b)
+    else:
+      continue
+    s.append(f)  
+  return(s,count)
+
+
+m=input('Enter the number of Integers to be entered: ')
+nos=[]
+s=input('Enter the number space seperated: ') 
+nos=map(int,s.split())
+q=dec2base(nos)
+s=sod(q)
+o=[]
+o,t=countinversions(s)
+print(q)
+print(s)
+print(o)
+print(t)
