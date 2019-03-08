@@ -1,0 +1,25 @@
+def nofe (l:list,z:int):
+  #this Function returns the number of frames required
+  count=0
+  y=0
+  for m,i in enumerate(l):
+    y+=i
+    if(y>=z or m == len(l)-1):
+      y=0
+      count+=1
+    else:
+      continue
+  return(count)
+
+
+n=int(input("Enter the number of Messages to be sent: "))
+siz=int(input("Enter the size of the dataframe used: "))
+c=[]
+d=[]
+for i in range(n):
+  a,b=input("Actual and Compressed message size: ").split()
+  d.append(a)
+  c.append(b)
+c = list(map(int,c))
+v=nofe(c,siz)
+print(v)
